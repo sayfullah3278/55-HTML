@@ -8,19 +8,23 @@
 </head>
 <body>
     <form ><pre>
+        <fieldset>
         <legend>REgistasion from</legend>
         <label>Name</label>
         <input type="text">
         <label>Email</label>
-        <input type="email" readonly="Email" placeholder="Enter your email addres">
+        <input type="email" readonly="email" placeholder="Enter your email addres">
         <label>gander</label>
         <input type="radio" name="gender"><label>Male</label>
         <input type="radio" name="gender"><label>Female</label>
-        <select>--subject--</select>
+        <label>subject</label>
+        <select>
+             <option >--subject--</option>
              <option >JEE</option>
              <option >HTML</option>
              <option >Bootstap</option>
              <option >CSS</option>
+            </select>
         <label>Skills</label>
         <input type="checkbox"> <label>Typping</label>
         <input type="checkbox"> <label>Programing</label>
@@ -31,6 +35,7 @@
         </textarea>
         <input type="submit" value="submit">
         <button>reset</button>
+    </fieldset>
     </pre>
     </form>
 </body>
