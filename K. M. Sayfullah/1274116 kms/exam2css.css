@@ -1,0 +1,34 @@
+.kkl{
+    list-style-type: disc;
+}
+nav{
+    margin: 0;
+    padding: 0%;
+}
+nav{
+    width: 100%;
+    height: 35px;
+    background-color: rgb(128, 233, 233);
+    
+}
+nav ul li{
+    float: left;
+    list-style-type: none;
+    padding: 5px;
+}
+nav ul li a{
+    text-decoration: none;
+}
+nav ul li a:hover{
+    background-color: bisque;
+}
+.gg{
+    background-color: black;
+    color: aliceblue;
+}
+.jj{
+    background-color: yellow;
+}
+.cool{
+    background-color: red;
+}
