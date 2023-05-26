@@ -6,3 +6,38 @@
 *{
     font-family: 'Roboto', sans-serif;
 }
+#hh1{
+    text-align: center;
+    color: black;
+}
+#hh2{
+    text-align: center;
+    color: rgb(252, 135, 63);
+}
+#bbn223{
+    align-content: center;
+}
+#himsagor{
+    float: right;
+    
+}
+.boxe{
+    float: right;
+    box-sizing: border-box;
+    background-color: aqua;
+}
+.oooold{
+    float: right;
+    background-color: bisque;
+    width: 300px;
+    border: 15px solid rgb(47, 248, 47);
+    padding: 50px;
+    margin: 10px;
+    color: black;
+  }
+  #list{
+    list-style-type: none;
+    text-align: right;
+    text-shadow: 5px;
+    color: blueviolet;
+  }
