@@ -35,6 +35,9 @@
             <input type="checkbox" value="Swining">Swining
             <input type="checkbox" value="Hiking">Hiking
 
+            <label for="">Aboyt</label>
+            <textarea name="" id="about" cols="30" rows="10"></textarea>
+
             <input type="submit" value="submit" onclick="dataTransfar()">
         </form>
     </pre>
@@ -46,6 +49,7 @@
         const name=document.getElementById("name").value;
         const email=document.getElementById("email").value;
         const password=document.getElementById("password").value;
+        const about=document.getElementById("about").value;
 
         let gender;
 
@@ -75,6 +79,7 @@
         localStorage.setItem("s_gender",gender);
         localStorage.setItem("s_subject",subject);
         localStorage.setItem("s_hobby",s_hobby);
+        localStorage.setItem("s_about",about);
 
     }
 
