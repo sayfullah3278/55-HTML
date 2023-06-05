@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prim</title>
+</head>
+<body>
+    <label>Number1</label> 
+    <input type="text" id="number">
+
+     <button onclick=" prime()">chack</button>
+
+    <script>
+        
+
+        function prime(){
+        let number=document.getElementById("number").value;
+        let conter=0;
+
+        for(let i=1; i<=number; i++){
+                if(number%i==0){
+                conter=conter+1;
+            }
+        }
+
+        if( conter==2){
+            alert("prime number");
+        }
+
+        else{
+            alert("not prim number");
+        }
+
+            
+        }
+        
+    </script>
+</body>
+</html>
