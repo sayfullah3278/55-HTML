@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Price</label>
+    <input type="text" id="price"  oninput=" calculatePrice()"><br>
+    
+    <label>Discount</label>
+    <input type="text" id="discount"><br>
+
+
+    <label>Payable amount</label>
+    <input type="text" id="paAmount">
+
+
+    <script>
+        function calculatePrice(){
+            let price=document.getElementById("price").value;
+            let discount=document.getElementById("discount").value;
+            let paAmount=document.getElementById("paAmount").value;
+
+            discountAmount=0;
+            payableAmount=0;
+
+            if(price<=500){
+                discountAmount=price*(5/100);
+                payableAmount=price-payableAmount;
+            }
+            else if(price<=500){
+                discountAmount=price*(7/100);
+                payableAmount=price-payableAmount;
+            }
+            else(price<=500){
+                discountAmount=price*(7.5/100);
+                payableAmount=price-payableAmount;
+            }
+
+            document.getElementById
+        }
+       
+       
+
+    </script>
+</body>
+</html>
