@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let startNum=parseInt(prompt("st point"));
+        let endNum=parseInt(prompt("st point"));
+       
+
+
+        for (let i=startNum; i<=endNum; i++){
+
+            let conter=0;
+            for(let p=1; p<=i; p++){
+                
+                if(i%p==0){
+                    conter+=1;
+
+                }
+            }
+            if(conter==2){
+                document.write(i+"</br>" );
+            }
+        }
+    </script>
+</body>
+</html>

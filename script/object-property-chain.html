@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        h2{
+            font-size: 12pt;
+            color: tomato;
+            font-family: Verdana;
+        }
+        .clickNote{
+            font-size: 12pt;
+            font-weight: bold;
+            color: tomato;
+            background-color: black;
+            font-family: verdana;
+        }
+
+    </style>
+</head>
+<body>
+    
+<h2>object Hierrarchy Practice</h2>
+<span class="clickNote">&nbsp; click the Button:&nbsp</span>
+<form name="petstore">
+    <input type="text" name="puppy">
+    <input type="button" name="clicker" value="clik to change the text" onclick="doIt()" ondblclick=" doItDbl()" onmouseenter="doItEnter()" >
+</form>
+
+
+
+
+<script>
+    function doIt(){
+        window.document.petstore.puppy.valye="Swissy";
+        window.document.petstore.clicker.valye="I have been clicked";
+        
+    }
+    function doItDbl(){
+        window.document.petstore.puppy.valye="Dog";
+        window.document.petstore.clicker.valye="I have been Double clicked";
+        
+    }
+    function doItEnter(){
+        window.document.petstore.puppy.valye="Flying Dog";
+        window.document.petstore.clicker.valye="I have been been tch clicked";
+        
+    }
+</script>
+
+</body>
+</html>
