@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>no four</title>
+</head>
+<body>
+    <script>
+    //    let fstnum=parsInt(prompt("Enter starting")); 
+    //    let endNumber=parsInt(prompt("Enter endd"));
+
+    //    for(let i=fstnum; i<=endnumber; i++){
+	// 	let counter=0;
+    //     for(let p=1; p<=i; p++){
+    //         if(i%p==0){
+    //             counter +=1;
+    //         }
+    //     }
+    //     if(counter==2){
+    //         document.write(i+"<br>");
+    //     }
+    //    }
+
+    let startNumber=parseInt(prompt("Enter starting point")); 
+        let endNumber=parseInt(prompt("Enter End point")); 
+      
+
+        for(let i=startNumber; i<=endNumber; i++){ 
+            let counter=0;            
+            for(let p=1; p<=i; p++){ 
+                 
+                if(i%p==0){
+                    counter +=1;
+                }
+                
+            }
+
+            if(counter==2){
+                document.write(i+"<br>");
+            }
+
+        }
+
+    </script>
+</body>
+</html>

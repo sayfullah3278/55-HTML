@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>no nine</title>
+</head>
+<body>
+    <script>
+        let myArray=[];
+        let input=prompt("Enter your  Number");
+        result=0;
+        for(let i=1; i<=input; i++){
+            let input=parseInt(prompt("Enter yourNumbr" +i));
+            myArray.push(input);
+            result=result+input;
+        }
+        document.write("your number is "+myArray+"Total is "+result);
+    </script>
+</body>
+</html>

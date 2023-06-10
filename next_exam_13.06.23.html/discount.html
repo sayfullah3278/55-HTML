@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Unit Price</label>
+    <input type="text" id="uPrice"><br>
+
+    <label for="">Quantity</label>
+    <input type="text" id="quantity" oninput="calculatePrice()"><br>
+
+    <label for="">Price</label>
+    <input type="text" id="price" ><br>
+    
+    <label for="">Discount</label>
+    <input type="text" id="discount"><br>
+    
+    <label for="">Amount</label>
+    <input type="text" id="amount"><br>
+
+    <script>
+        function calculatePrice(){
+            uPrice=document.getElementById("uPrice").value;
+            quantity=document.getElementById("quantity").value;
+
+            price=uPrice*quantity;
+            discountAmount=0;
+            payableAmount=0;
+
+            if(price<=500){
+                discountAmount=price*(.05);
+                payableAmount=price-discountAmount;
+
+            }
+            else if(price<=1000){
+                discountAmount=price*(.07);
+                payableAmount=price-discountAmount;
+            }
+            else{
+                discountAmount=price*(.075);
+                payableAmount=price-discountAmount;
+            }
+            document.getElementById("discount").value=discountAmount;
+            document.getElementById("amount").value=payableAmount;
+            document.getElementById("price").value=price;
+        }
+    </script>
+</body>
+</html>
