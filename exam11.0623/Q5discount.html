@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">prise</label>
+    <input type="text" id="price"><br>
+    <label for="">discount</label>
+    <input type="text" id="discount"  oninput=" cilcktit()" ><br>
+    <label for="">new price</label>
+    <input type="text" id="new price">
+
+    <script>
+        function cilcktit(){
+        let price=parseInt(document.getElementById("price").value) ;
+        let discounnt=parseFloat(document.getElementById("discount").value) ;
+        let newprice=price-(price*discounnt/100);
+
+        document.getElementById("new price").value=newprice.toFixed(2);
+        
+        // discountAmount=0;
+        // newprice=0;
+
+        //     // if(price<=500){
+        //     //     discountAmount=price*(.05);
+        //     //     newprice=price-discountAmount;
+
+        //     // }
+        //     // else if(price<=1000){
+        //     //     discountAmount=price*(.07);
+        //     //     newprice=price-discountAmount;
+        //     // }
+        //     // else{
+        //     //     discountAmount=price*(.075);
+        //     //     newprice=price-discountAmount;
+        //     // }
+        //     document.getElementById("discount").value=discountAmount;
+        //     document.getElementById("new price").value=newprice;
+        //     document.getElementById("price").value=price;
+        
+        }
+
+        
+    </script>
+</body>
+</html>
