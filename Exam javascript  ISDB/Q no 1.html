@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1Form submit</title>
+</head>
+<body>
+    <form id="isdb">
+        <pre>
+        <label>Name</label>
+        <input type="text" id="name"><br>
+
+        <label>Contact</label>
+        <input type="text" id="contact"><br>
+
+        <label>Remarks</label>
+        <textarea name="text box" id="remarks" cols="30" rows="5"></textarea>
+
+        <label>Sex</label><br>
+        <input type="radio" name="sex" value="Male">Male
+        
+        <input type="radio" name="sex" value="female">Female<br> 
+
+        <label>Courses</label>
+        
+        <input type="checkbox" value="NT">NT
+
+        <input type="checkbox" value="IAD">IAD
+
+        <input type="checkbox" value="DDD">DDD
+
+        <input type="checkbox" value="ESAD">ESAD
+
+        <label>Location</label><br>
+        <select name="location" id="location">
+            <option value="none">--select one--</option>
+            <option value="Banani">Banani</option>
+            <option value="Dhanmondi">Dhanmondi</option>
+            <option value="Mirpur">Mirpur</option>
+
+        </select>
+        
+        <input type="submit" value="Submit">
+    </pre>
+
+    </form>
+    <script>
+        function dataTransfer(event){
+            event.preventDefault();
+
+            const name=document.getElementById("name").value;
+            const contact=document.getElementById("contact").value;
+            const remarks=document.getElementById("remarks").value;
+            const sex=document.querySelector("input[type=radio]:checked").value;
+            const courses=document.querySelectorAll("input[type=checkbox]:checked");
+            const location=document.getElementById("location").value;
+
+            let coursess=[];
+            
+            courses.forEach(function(courses){
+                coursess.push(courses.value);
+            });
+            
+
+            var output = "Name :"+name+"<br>";
+                output += "contact :"+contact+"<br>";
+                output += "Remarks :"+remarks+"<br>";
+                output += "SEX :"+sex+"<br>";
+                output += "Courses :"+coursess.join(",")+"<br>";
+                output += "Location :"+location+"<br>";
+
+             var newWindow= window.open('','_blank');
+                 newWindow.document.write('<pre>'+output+'</pre>');
+
+        }
+        let hoold=document.getElementById("isdb");
+            hoold.addEventListener('submit',dataTransfer);
+    </script>
+</body>
+</html>
