@@ -1,0 +1,112 @@
+SELECT SESSIONTIMEZONE, CURRENT_TIMESTAMP FROM DUAL;
+
+SELECT last_name, FLOOR (SYSDATE-hire_date)
+FROM employees
+WHERE department_id = 90;
+
+
+SELECT last_name,ROUND( (SYSDATE-hire_date)/30,0) AS MONTH
+FROM employees
+WHERE department_id = 90;
+
+SELECT last_name,ROUND( (SYSDATE-hire_date)/365,0) AS YEAR
+FROM employees
+WHERE department_id = 90;
+
+
+SELECT last_name,ROUND( (SYSDATE-'20-Jan-97')/365,0) AS  BIRTHDAY
+FROM employees
+WHERE department_id = 90;
+
+SELECT (SYSDATE-TO_DATE('10-JAN-97','DD-MON-YYYY'))/365 FROM DUAL;
+
+SELECT NEXT_DAY(SYSDATE,1) FROM DUAL;
+
+SELECT MONTHS_BETWEEN(SYSDATE,'10-JAN-97') FROM EMPLOYEES;
+
+SELECT ADD_MONTHS(SYSDATE,10) FROM DUAL;
+
+
+SELECT MONTHS_BETWEEN
+('01-SEP-05','11-JAN-04') FROM DUAL;
+
+
+SELECT ADD_MONTHS ('31-JAN-04',1) FROM DUAL;
+
+
+
+
+SELECT NEXT_DAY ('01-SEP-05','FRIDAY') FROM DUAL;
+
+SELECT FROM DUAL;
+
+
+SELECT employee_id, TO_CHAR(hire_date, 'MM/YY') Month_Hired
+FROM employees
+WHERE last_name = 'Higgins';
+
+SELECT last_name, TO_CHAR(hire_date, 'DD-Mon-YYYY')
+FROM employees
+WHERE hire_date < TO_DATE('01-Jan-07','DD-Mon-RR');
+
+SELECT LAST_NAME, COMMISSION_PCT, NVL(COMMISSION_PCT,1)
+FROM EMPLOYEES;
+
+SELECT  LAST_NAME, COMMISSION_PCT, NVL(COMMISSION_PCT,1),
+NVL2(COMMISSION_PCT, 'ZERO',0)
+FROM EMPLOYEES;
+
+SELECT FIRST_NAME, LAST_NAME, COMMISSION_PCT, 
+NULLIF(LENGTH(FIRST_NAME),LENGTH(LAST_NAME))
+FROM EMPLOYEES;
+
+SELECT FIRST_NAME, COMMISSION_PCT, 
+COALESCE(COMMISSION_PCT,0.4,10)
+FROM EMPLOYEES;
+
+SELECT last_name, salary, commission_pct,
+COALESCE((salary+(commission_pct*salary)), salary+2000)"New Salary"
+FROM employees;
+
+SELECT last_name, job_id, salary,
+CASE job_id WHEN 'IT_PROG' THEN 1.10*salary
+WHEN 'ST_CLERK' THEN 1.15*salary
+WHEN 'SA_REP' THEN 1.20*salary
+ELSE salary END "REVISED_SALARY"
+FROM employees;
+
+SELECT department_id, job_id, sum(salary)
+FROM employees
+GROUP BY department_id, job_id
+ORDER BY job_id;
+
+SELECT department_id, job_id, SUM(salary)
+FROM employees
+WHERE department_id > 40
+GROUP BY department_id, job_id
+ORDER BY department_id;
+
+SELECT department_id, AVG(salary)
+FROM employees
+GROUP BY department_id
+HAVING AVG(salary) > 8000
+ORDER BY 2 DESC;
+
+SELECT job_id, SUM(salary) PAYROLL
+FROM employees
+WHERE job_id LIKE '%REP%'
+GROUP BY job_id
+HAVING SUM(salary) > 13000
+ORDER BY SUM(salary);
+
+SELECT FIRST_NAME,LAST_NAME ,SALARY
+FROM EMPLOYEES
+WHERE SALARY= (
+SELECT  MAX(SALARY) 
+FROM EMPLOYEES
+WHERE SALARY<(
+SELECT MAX(SALARY)
+FROM EMPLOYEES
+)
+);
+ 
