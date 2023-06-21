@@ -1,0 +1,41 @@
+SELECT LAST_NAME, NVL(TO_CHAR (COMMISSION_PCT),'NO COMMISSION')
+FROM EMPLOYEES;
+
+SELECT JOB_ID,
+CASE JOB_ID 
+    WHEN 'AD_PRES' THEN 'GRADE A'
+    WHEN 'ST_MAN' THEN 'GRADE B'
+    WHEN 'IT_PROG' THEN 'GRADE C'
+     WHEN 'SA_REP' THEN 'GRADE D'
+      WHEN 'ST_CLERK' THEN 'GRADE E'
+    ELSE '0'
+    END GRADE
+    FROM EMPLOYEES;
+    
+    
+    SELECT JOB_ID, CASE 
+            WHEN JOB_ID ='ST_CLETK' THEN 'A'
+              WHEN JOB_ID ='SA_REP' THEN 'B'
+                 WHEN JOB_ID ='IT_PROG' THEN 'A'
+                    WHEN JOB_ID ='ST_MAN' THEN 'A'
+                      WHEN JOB_ID ='AD_PRES' THEN 'A'
+                      ELSE '0'
+                      END GRADE
+                      FROM EMPLOYEES;
+
+        
+SELECT JOB_ID, DECODE (JOB_ID,
+'ST_CLERK','E',
+'SA_REP', 'D',
+'IT_PROG','C',
+'ST_MAN','B',
+'AD_PRES)','A',
+'0')GRADE
+FROM EMPLOYEES;
+
+SELECT ROUND (MAX(SALARY),0)"MEXIMUM",
+        ROUND (MIN(SALARY),0)"MINIMUM",
+        ROUND (SUM(SALARY),0)"SUM",
+        ROUND (AVG(SALARY),0)"AVERAGE"
+FROM EMPLOYEES;
+
