@@ -1,0 +1,73 @@
+Qushan 1
+
+
+ans:
+		create table kms1274116(
+    eid int constraint kms1274116_cons primary key,
+    ename varchar2 (30),
+    salary number (8,2),
+    hire_date date,
+    addres varchar2 (30)
+  );
+
+
+
+Qushan 2
+
+ans	
+		ALTER TABLE kms1274116
+  ADD( department_id number(8),
+      dept_name varchar2(30));
+
+
+
+
+
+
+Qushan 3
+
+ans:   
+		insert into kms1274116 
+values(1,'sabit',50000,'01-Jun-2020','pubna');
+
+insert into kms1274116 
+values(2,'limon',80000,'22-May-2020','forid pur');
+
+
+
+
+
+
+Qushan 4
+
+Ans:  
+	create view kms1274116_view
+	as select ename,dept_name,salary from kms1274116
+             where department_id = 80;
+
+
+
+
+
+Qushan 5
+	
+ans: 
+	create sequence kms1274116_seq2 start with 100 increment by 1;
+
+
+
+
+
+
+Qushan 6 
+
+ans: 
+	insert into kms1274116(eid,ename,salary,hire_date,department_id)
+	select employee_id,last_name,salary,hire_date,department_id
+        from employees
+        where department_id=80;
+
+
+
+
+

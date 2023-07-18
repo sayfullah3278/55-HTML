@@ -1,0 +1,1 @@
+create sequence kms1274116_seq2 start with 100 increment by 1;
