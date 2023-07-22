@@ -1,0 +1,20 @@
+ int guessNumber=(int) Math.random()*10;
+       int i=1;
+       int winner=8;
+       
+       for(i=1;i<=5;i++){
+           System.out.println("Please enter your guess number ");
+           int input=sc.nextInt();
+           if(guessNumber==input){
+               System.out.println("You won 10000$");
+           }
+           else if(input==winner){
+               System.out.println("You won 10000$ By Cheating\n");
+           }
+           else if(input==60){
+               System.out.println("You won 10000$ By Cheating\n");
+           }
+               else{
+                       System.out.println("Better Luck next time \n");
+                       }
+           }

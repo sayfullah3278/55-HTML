@@ -39,16 +39,19 @@
 //                 
 //         System.out.println("sho sum"+sum);
 
-//       
-       int n1;
-       int n2;
-     System.out.println("enter number 1");
+//   	    
+    		   int n1;
+    		   int n2;
+    	 System.out.println("enter number 1");
          n1=inpute.nextInt();
          System.out.println("enter number 2");
          n2=inpute.nextInt();
         System.out.println("The modulas of two number is"+(n1%n2));
 //         
-//          int usr;
+//        
+
+
+	  int usr;
 //        System.out.println("pls enter user mark");
 //          usr= inpute.nextInt();
 //        System.out.println("Your Mark is  "+usr);
