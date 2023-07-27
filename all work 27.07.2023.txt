@@ -1,0 +1,169 @@
+
+package maxmintest;
+
+import java.util.Scanner;
+
+
+public class MaxminTest {
+
+   
+    public static void main(String[] args) {
+        Scanner intter= new Scanner (System.in);
+        
+        System.out.println("plis enter 1st num:");
+            int num1 =intter.nextInt();
+        System.out.println("plis enter 2nd num:");
+            int num2= intter.nextInt();
+        System.out.println("plis enter 3rd num:");
+            int num3= intter.nextInt();
+         int maxNum=0, minNim=0;   
+        
+         if(num1>num2 && num1>num3){
+             maxNum=num1;
+         }   
+         else if(num2>num1 && num2>num3){
+             maxNum=num2;
+         }   
+         else{
+             maxNum=num3;
+         }   
+         
+         
+         if(num1<num2 && num1<num3){
+             minNim=num1;
+         }   
+         else if(num2<num1 && num2<num3){
+              minNim=num2;
+         }   
+         else{
+             maxNum=num3;
+         }   
+         
+        System.out.println("max number"+maxNum);
+        System.out.println("max number"+minNim);
+            
+        
+    }
+    
+}
+
+2nd////////////////
+
+package maxmintest;
+
+import java.util.Scanner;
+
+
+public class anatherWayMaxMin {
+    public static void main(String[] args) {
+         Scanner intter= new Scanner (System.in);
+         
+         System.out.println("enter item number");
+          int n = intter. nextInt();
+         
+         int max=0, min=999999999;
+         int inputNum; int sum=0;
+         int avgNum=n;
+            while(n>0){
+         System.out.println("Enter number");
+         inputNum= intter.nextInt();
+         sum += inputNum;
+         
+             if(max<inputNum){
+          max = inputNum;
+         }
+         if (min>inputNum){
+             min =inputNum;
+         }
+         n--;
+            }
+            avgNum=sum/avgNum;
+         System.out.println("max num="+max);
+         System.out.println("min num="+min );
+         System.out.println("avg num="+(double)avgNum );        
+         
+    }
+}
+ n3.....................
+
+
+package maxmintest;
+
+import java.util.Scanner;
+
+
+public class primeNumber {
+    public static void main(String[] args) {
+                Scanner intter= new Scanner (System.in);
+                System.out.println("enter an element");
+                int usrInpt= intter.nextInt();
+                 
+                int count=0;
+                for(int i=1; i<=usrInpt; i++){
+                if(usrInpt %i==0){
+                    count+=1;
+                }
+             }
+                if (count==2){
+                    System.out.println("This is prim number");
+                }
+                else{System.out.println("This is not a prim number");
+                }
+    }
+}
+nnm4>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+package maxmintest;
+
+import java.util.Scanner;
+
+
+public class FacktoriyalANumber {
+    public static void main(String[] args) {
+                Scanner inter= new Scanner (System.in);
+                int fact=1;
+                  int num=0;
+                System.out.println("plis enter num");
+              
+                num= inter.nextInt();
+                
+                for( int i=1; i<=num; i++){
+                fact=fact*i;
+                }
+                System.out.println("factorial of " +num + "  is "+fact);
+    }
+}
+num5<<<<<<<<<<<<<<<<<<
+
+package maximuntest;
+
+import java.util.Scanner;
+
+
+public class PrimeRange {
+    public static void main(String[] args) {
+         Scanner s = new Scanner(System.in);
+        int s1, s2;
+        
+         System.out.println ("Enter the lower limit :"); 
+         s1 = s.nextInt();
+         System.out.println ("Enter the upper limit :"); 
+         s2 = s.nextInt();
+         System.out.println ("The prime numbers in between the entered limits are :");
+         for(int i = s1; i <= s2; i++)
+         {int count=0;
+             for(int j = 1; j <= i; j++)
+             {
+                 if(i % j == 0){
+                      count += 1;
+                     }
+              
+    }
+              if (count==2){
+                    System.out.println(i);
+              
+}
+
+}
+    }
+}
