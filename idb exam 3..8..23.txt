@@ -1,0 +1,77 @@
+//////////////////////////////////////////////////////////////////grading////////////////////////////////////////
+
+package question;
+
+import java.util.Scanner;
+   
+
+public class result {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter number");
+        int input=sc.nextInt();
+        
+        if(input==80){
+            System.out.println("A+");
+        }
+        else if(input==60){
+            System.out.println("A-");
+        }
+        else{
+            System.out.println("Please enter question Percentage");
+        }
+        
+    }
+}
+
+
+
+//////////////////////////////////////////////////////facktorial/////////////////////////////////////////////////////////////
+
+package question;
+
+
+public class Factorial {
+    public static void main(String[] args) {
+        int input=5;
+        int factorial=1;
+        for(int i=input;i>=1;i--){
+            factorial=factorial*i;
+        }
+        System.out.println("The factorial of 5 is "+factorial);
+    }
+}
+
+
+////////////////////////////////////////////////primnumber////////////////////////////////////////////////////
+
+
+package javaapplication1;
+
+import java.util.Scanner;
+
+
+public class JavaApplication1 {
+
+    
+      public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Pls enter number");
+        int input=sc.nextInt();
+        int sum=0;
+        for(int i=1;i<=input;i++){
+            if(input%i==0){
+                sum=sum+1;
+            }
+             
+        }
+        if(sum==2){
+                System.out.println(input+" is a prime number");
+            }
+            else{
+                System.out.println(input+" is not a prime");
+            }
+    }
+    
+}
+  
