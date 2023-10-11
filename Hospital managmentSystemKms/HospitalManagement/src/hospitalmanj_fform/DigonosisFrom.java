@@ -4,20 +4,68 @@
  */
 package hospitalmanj_fform;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author SAIFULLAH
  */
 public class DigonosisFrom extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DigonosisFrom
-     */
+    DataBasseconnaction con=new DataBasseconnaction();
+    PreparedStatement ps;
+    String sql="";
+    ResultSet rs;
+    
     public DigonosisFrom() {
         initComponents();
         setLocationRelativeTo(null);
     }
-
+    
+     public  java.sql.Date convertUtlToSql(java.util.Date utilDate){
+        if(utilDate!=null){
+        return new java.sql.Date(utilDate.getTime());
+        }
+    return null;
+    }
+     public  void getAllappointment(){
+     String[] colums={"pasant_id","pasantname","contactno","address","doctorid","doctorname","qualification","visitingtime","date"};
+         DefaultTableModel dtm=new DefaultTableModel();
+         dtm.setColumnIdentifiers(colums);
+         
+         tblappointment.setModel(dtm);
+         sql="select * from appointment";
+         
+        try {
+            ps=con.getcom().prepareStatement(sql);
+            
+            rs=ps.executeQuery();
+            
+            while(rs.next()){
+            int pasid=rs.getInt("pasant_id");
+            String pasName=rs.getString("pasantname");
+            String pascontactno=rs.getString("contactno");
+            String pasaddress=rs.getString("address");
+            int doctorid=rs.getInt("doctorid");
+            String doctorName=rs.getString("doctorname");
+            String docqualification=rs.getString("qualification");
+            String docvisitingtime=rs.getString("Visitingtime");
+            Date datee=rs.getDate("date");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DigonosisFrom.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }
+     
+     public 
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,22 +132,22 @@ public class DigonosisFrom extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         txtpascontact = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtpname = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        txtAddress = new javax.swing.JTextArea();
+        txtappointAddress = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblappointment = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
-        txtAppodocNam = new javax.swing.JTextField();
+        txtAppodocName = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         txtappoDocid = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         TxtappdocQualification = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        cxbVisitingtime = new javax.swing.JComboBox<>();
+        comboVisitingtime = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
-        dateVisiring = new com.toedter.calendar.JDateChooser();
+        dateappointVisiring = new com.toedter.calendar.JDateChooser();
         jLabel24 = new javax.swing.JLabel();
         txtPid = new javax.swing.JTextField();
         btnappoResat = new javax.swing.JButton();
@@ -394,20 +442,18 @@ public class DigonosisFrom extends javax.swing.JFrame {
 
         jLabel17.setText("Contact no:");
         jPanel10.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 70, 20));
-
-        jTextField8.setText("txtpname");
-        jPanel10.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 150, -1));
+        jPanel10.add(txtpname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 150, -1));
 
         jLabel18.setText("Address");
         jPanel10.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 60, -1));
 
-        txtAddress.setColumns(20);
-        txtAddress.setRows(5);
-        jScrollPane4.setViewportView(txtAddress);
+        txtappointAddress.setColumns(20);
+        txtappointAddress.setRows(5);
+        jScrollPane4.setViewportView(txtappointAddress);
 
         jPanel10.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 150, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblappointment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -418,13 +464,13 @@ public class DigonosisFrom extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane5.setViewportView(jTable1);
+        jScrollPane5.setViewportView(tblappointment);
 
         jPanel10.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 280, 240));
 
         jLabel19.setText("Doctor id");
         jPanel10.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 60, 20));
-        jPanel10.add(txtAppodocNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 150, -1));
+        jPanel10.add(txtAppodocName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 150, -1));
 
         jLabel20.setText("Doctor Name");
         jPanel10.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 80, -1));
@@ -437,12 +483,12 @@ public class DigonosisFrom extends javax.swing.JFrame {
         jLabel22.setText("Visiting time");
         jPanel10.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 80, 20));
 
-        cxbVisitingtime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chos Time", "09:00am to 12:00pm", "12:00pm  to  03:00pm", "03:00 pm to 06:00pm", "05:00pm to 10:00pm", " ", " " }));
-        jPanel10.add(cxbVisitingtime, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 150, -1));
+        comboVisitingtime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chos Time", "09:00am to 12:00pm", "12:00pm  to  03:00pm", "03:00 pm to 06:00pm", "05:00pm to 10:00pm", " ", " " }));
+        jPanel10.add(comboVisitingtime, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 150, -1));
 
         jLabel23.setText("Visiting Date");
         jPanel10.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 70, 20));
-        jPanel10.add(dateVisiring, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 150, -1));
+        jPanel10.add(dateappointVisiring, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 150, -1));
 
         jLabel24.setText("Pasant id");
         jPanel10.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 70, 30));
@@ -757,8 +803,8 @@ public class DigonosisFrom extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JComboBox<String> cxbVisitingtime;
-    private com.toedter.calendar.JDateChooser dateVisiring;
+    private javax.swing.JComboBox<String> comboVisitingtime;
+    private com.toedter.calendar.JDateChooser dateappointVisiring;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -847,7 +893,6 @@ public class DigonosisFrom extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
@@ -873,16 +918,17 @@ public class DigonosisFrom extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JRadioButton radioFemaled;
     private javax.swing.JRadioButton radiomaled;
     private javax.swing.JTabbedPane tabepanedigonosis;
     private javax.swing.JTable tableDoctor;
     private javax.swing.JTable tablePasent;
-    private javax.swing.JTextArea txtAddress;
-    private javax.swing.JTextField txtAppodocNam;
+    private javax.swing.JTable tblappointment;
+    private javax.swing.JTextField txtAppodocName;
     private javax.swing.JTextField txtPid;
     private javax.swing.JTextField txtappoDocid;
+    private javax.swing.JTextArea txtappointAddress;
     private javax.swing.JTextField txtpascontact;
+    private javax.swing.JTextField txtpname;
     // End of variables declaration//GEN-END:variables
 }
