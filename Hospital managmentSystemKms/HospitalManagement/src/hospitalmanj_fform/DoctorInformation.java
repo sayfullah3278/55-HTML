@@ -57,7 +57,7 @@ public class DoctorInformation extends javax.swing.JFrame {
     }
 
     public void getAllDoctors() {
-        String[] columnse = {"id", "name", "password", "qualifications", "joiningDate", "contactNo", "gender", "bloodGroup"};
+        String[] columnse = {"id", "name", "password", "qualifications", "joiningDate", "contactNo", "gender", "blodgroup"};
         DefaultTableModel modleno1 = new DefaultTableModel();
         modleno1.setColumnIdentifiers(columnse);
 
@@ -78,7 +78,7 @@ public class DoctorInformation extends javax.swing.JFrame {
                 Date jonDate = rs.getDate("joiningDate");
                 String contact = rs.getString("contactNo");
                 String gender = rs.getString("gender");
-                String bloodgrp = rs.getString("bloodGroup");
+                String bloodgrp = rs.getString("blodgroup");
 
                 modleno1.addRow(new Object[]{id, name, password, qualific, jonDate, contact, gender, bloodgrp});
             }
@@ -99,17 +99,18 @@ public class DoctorInformation extends javax.swing.JFrame {
         } else if (radiofemale.isSelected()) {
             gender = "Female";
         }
-        sql = "update doctorinformation set name=?,password=?,qualifications=?,joiningDate=?,contactNo=?,gender=?,bloodGroup=? where id=?";
+        sql = "update doctorinformation set name=?,password=?,qualifications=?,joiningDate=?,contactNo=?,gender=?,blodgroup=? where id=?";
         try {
             ps = con.getcom().prepareStatement(sql);
 
             ps.setString(1, txtname.getText().trim());
             ps.setString(2, txtpassw.getText().trim());
-            ps.setString(3, txtqualificatn.getText().trim());
+            ps.setString(3, combodocinfoQualifications.getSelectedItem().toString());
             ps.setDate(4, convertUtlToSql(txtjondate.getDate()));
             ps.setString(5, txtcontact.getText().trim());
             ps.setString(6, gender);
             ps.setString(7, comboblood.getSelectedItem().toString());
+            ps.setInt(8, Integer.parseInt(txtid.getText().trim()));
 
             ps.executeUpdate();
             ps.close();
@@ -125,7 +126,7 @@ public class DoctorInformation extends javax.swing.JFrame {
         txtid.setText(null);
         txtname.setText(null);
         txtpassw.setText(null);
-        txtqualificatn.setText(null);
+       combodocinfoQualifications.setSelectedItem(0);
         txtjondate.setDate(null);
         txtcontact.setText(null);
         buttonGroup1.clearSelection();
@@ -144,7 +145,6 @@ public class DoctorInformation extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtqualificatn = new javax.swing.JTextField();
         txtid = new javax.swing.JTextField();
         txtname = new javax.swing.JTextField();
         txtpassw = new javax.swing.JTextField();
@@ -161,6 +161,7 @@ public class DoctorInformation extends javax.swing.JFrame {
         radiofemale = new javax.swing.JRadioButton();
         comboblood = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
+        combodocinfoQualifications = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -209,7 +210,6 @@ public class DoctorInformation extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Qualifications");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 80, 40));
-        jPanel1.add(txtqualificatn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 260, 40));
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 260, 40));
         jPanel1.add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 260, 40));
         jPanel1.add(txtpassw, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 260, 40));
@@ -236,7 +236,12 @@ public class DoctorInformation extends javax.swing.JFrame {
 
         btnremove.setBackground(new java.awt.Color(51, 51, 0));
         btnremove.setForeground(new java.awt.Color(255, 255, 204));
-        btnremove.setText("REMOVE");
+        btnremove.setText("New");
+        btnremove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnremoveMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnremove, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 90, 40));
 
         btndelete.setBackground(new java.awt.Color(51, 51, 0));
@@ -285,6 +290,9 @@ public class DoctorInformation extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Gender");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, 40));
+
+        combodocinfoQualifications.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--selact--", " Cardiology ", "Orthopedics", "Urology", "Obstetrics and Gynaecology", "Internal medicine", "Internal medicine", "Neurology", "General surgery", "Physical medicine and rehabilitation", " " }));
+        jPanel1.add(combodocinfoQualifications, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 260, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 390, 520));
 
@@ -359,11 +367,14 @@ public class DoctorInformation extends javax.swing.JFrame {
         String contactNo = tbldoclist.getModel().getValueAt(row, 5).toString();
         String gender = tbldoclist.getModel().getValueAt(row, 6).toString();
         String bloodGrop = tbldoclist.getModel().getValueAt(row, 7).toString();
-
+       
+        
+        
+        
         txtid.setText(id);
         txtname.setText(name);
         txtpassw.setText(password);
-        txtqualificatn.setText(qualifications);
+        combodocinfoQualifications.setSelectedItem(qualifications);
         txtjondate.setDate(formatStringdateToUtilDate(joiningDate));
         txtcontact.setText(contactNo);
         if (gender.equalsIgnoreCase("Male")) {
@@ -378,7 +389,7 @@ public class DoctorInformation extends javax.swing.JFrame {
 
     private void btnaddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnaddMouseClicked
         // TODO add your handling code here:
-        sql = "insert into doctorinformation(name,password,qualifications,joiningDate,contactNo,gender,bloodGroup)values(?,?,?,?,?,?,?)";
+        sql = "insert into doctorinformation(name,password,qualifications,joiningDate,contactNo,gender,blodgroup)values(?,?,?,?,?,?,?)";
         String gender = "";
 
         if (radiomale.isSelected()) {
@@ -392,7 +403,7 @@ public class DoctorInformation extends javax.swing.JFrame {
 
             ps.setString(1, txtname.getText().trim());
             ps.setString(2, txtpassw.getText().trim());
-            ps.setString(3, txtqualificatn.getText().trim());
+            ps.setString(3, combodocinfoQualifications.getSelectedItem().toString());
             ps.setDate(4, convertUtlToSql(txtjondate.getDate()));
             ps.setString(5, txtcontact.getText().trim());
             ps.setString(6, gender);
@@ -435,6 +446,11 @@ public class DoctorInformation extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btndeleteMouseClicked
+
+    private void btnremoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnremoveMouseClicked
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_btnremoveMouseClicked
 
     /**
      * @param args the command line arguments
@@ -482,6 +498,7 @@ public class DoctorInformation extends javax.swing.JFrame {
     private javax.swing.JButton btnupdate;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> comboblood;
+    private javax.swing.JComboBox<String> combodocinfoQualifications;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -507,6 +524,5 @@ public class DoctorInformation extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txtjondate;
     private javax.swing.JTextField txtname;
     private javax.swing.JTextField txtpassw;
-    private javax.swing.JTextField txtqualificatn;
     // End of variables declaration//GEN-END:variables
 }
