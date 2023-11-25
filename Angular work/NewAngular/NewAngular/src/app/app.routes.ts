@@ -6,5 +6,5 @@ export const routes: Routes = [
 
     
     {path: "contact", component: ContactComponent},
-    {path:"abouteall", component: AboutallComponent},
+    {path:"aboutall", component: AboutallComponent},
 ];

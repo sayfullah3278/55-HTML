@@ -1,0 +1,83 @@
+<div class="card" style="width: 18rem;">
+    <img src="../../assets/image/shane-rounce-DNkoNXQti3c-unsplash.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Pie Chart Example</h1>
+    <canvas id="myPieChart" width="400" height="400"></canvas>
+  </div>
+
+  <!-- Include Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Your JavaScript code for creating the chart -->
+  <script>
+    // Chart data
+    var pieData = {
+      labels: ['Label 1', 'Label 2', 'Label 3'],
+      datasets: [{
+        data: [30, 40, 30], // Example data, replace with your own
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.8)', // Color for Label 1
+          'rgba(54, 162, 235, 0.8)', // Color for Label 2
+          'rgba(255, 206, 86, 0.8)' // Color for Label 3
+        ],
+      }]
+    };
+
+    // Get the canvas element
+    var ctx = document.getElementById('myPieChart').getContext('2d');
+
+    // Create the pie chart using Chart.js
+    var myPieChart = new Chart(ctx, {
+      type: 'pie',
+      data: pieData,
+    });
+  </script>
+
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>twitter</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<div>
+    <ul class="list-group">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+      </ul>
+</div>
