@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Admission Form</title>
+</head>
+
+<body>
+
+<!-- ======= Admission Section ======= -->
+<section id="admission" class="admission section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Hospital Admission Form</h2>
+            <p>Please fill in the required information for admission.</p>
+        </div>
+
+        <form th:action="@{/passadmission}" th:object="${pasAdmissionSave}" method="post" role="form" class="php-email-form">
+            <input type="hidden" th:field="*{id}">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Patient Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required th:field="*{name}">
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Patient Email" data-rule="email" data-msg="Please enter a valid email" required th:field="*{email}">
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                    <input type="tel" class="form-control" name="phone" id="phone" placeholder="Patient Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required th:field="*{phone}">
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <input type="text" name="Age" class="form-control" id="age" placeholder="Patient Age" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required th:field="*{age}">
+                    <div class="validate"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group mt-3">
+                    <label for="sex">Sex:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sex" id="male" value="male" checked required th:field="*{sex}">
+                        <label class="form-check-label" for="male">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sex" id="female" value="female" required th:field="*{sex}">
+                        <label class="form-check-label" for="female">
+                            Female
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-4 form-group mt-3">
+                    <select name="bloodGroup" id="bloodGroup" class="form-select" th:field="*{bloodGroup}">
+                        <option value="">Select Blood-Group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                    <div class="validate"></div>
+                </div>
+
+                <div class="col-md-4 form-group mt-3">
+                    <select name="department" id="department" class="form-select" th:field="*{department}"/>
+                    <option value="">Select Department</option>
+                    <option value="Accident & Emergency">PHYSICAL MEDICINE & REHABILITATION</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="ORTHOPEDICS">ORTHOPEDICS</option>
+                    <option value="Dermatology & Venereology">Dermatology & Venereology</option>
+                    <option value="NUCLEAR MEDICINE">NUCLEAR MEDICINE</option>
+                    <option value="HEPATOBILIARY AND PANCREATIC SURGERY">HEPATOBILIARY AND PANCREATIC SURGERY</option>
+                    <option value="PAEDIATRIC NEUROLOGY">PAEDIATRIC NEUROLOGY</option>
+
+                    </select>
+
+                </div>
+                <div class="col-md-4 form-group mt-3">
+                    <select name="doctor" id="doctor" class="form-select" th:field="*{doctor}">
+                        <option value="">Select Doctor</option>
+                        <option value="DR. N A M MOMENUZZAMAN">DR. N A M MOMENUZZAMAN</option>
+                        <option value="DR. A. M. SHAFIQUE">DR. A. M. SHAFIQUE</option>
+                        <option value="PROF. DR. AFZALUR RAHMAN">PROF. DR. AFZALUR RAHMAN</option>
+                    </select>
+                    <div class="validate"></div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <textarea class="form-control" name="diseaseDescription" rows="5" placeholder="Disease Discription" th:field="*{diseaseDescription}"></textarea>
+                    <div class="validate"></div>
+                </div>
+
+
+                <div class="col-md-4 form-group mt-3">
+                    <input type="datetime-local" name="admissionDate" class="form-control" id="admissionDate" placeholder="Admission Date" required th:field="*{admissionDate}">
+                    <div class="validate"></div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6 form-group">
+                    <h5>Emergency Contact Information</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <input type="tel" class="form-control" name="emergencyContactNumber" id="emergencyContactNumber" placeholder="Emergency Contact Number" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required th:field="*{emergencyContactNumber}">
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <input type="text" class="form-control" name="relationshipWithPatient" id="relationshipWithPatient" placeholder="Relationship with Patient" data-rule="minlen:2" required th:field="*{relationshipWithPatient}">
+                    <div class="validate"></div>
+                </div>
+            </div>
+
+
+            <div class="text-center">
+                <button th:if="${id==null}" type="submit">Admission</button>
+                <button th:if="${id!=null}" type="submit">Update </button>
+
+            </div>
+        </form>
+
+    </div>
+</section><!-- End Admission Section -->
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

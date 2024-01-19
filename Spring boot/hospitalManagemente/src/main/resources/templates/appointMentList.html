@@ -1,0 +1,64 @@
+
+ <!DOCTYPE html>
+ <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <title>Appointment Information</title>
+ </head>
+
+ <body>
+
+ <div class="container mt-5">
+     <h2 class="text-center">Appointment Information</h2>
+
+     <table class="table table-bordered">
+         <thead>
+         <tr>
+             <th>Id</th>
+             <th>Name</th>
+             <th>Email</th>
+             <th>Phone</th>
+             <th>Appointment Date</th>
+             <th>Department</th>
+             <th>Doctor</th>
+             <th>Disease Description</th>
+             <th>Action</th>
+         </tr>
+         </thead>
+         <tbody>
+         <!-- Add a row for each appointment with data -->
+         <tr th:each="apintList:${appointList}">
+             <td th:text="${apintList.id}"></td>
+             <td th:text="${apintList.name}"></td>
+             <td th:text="${apintList.email}"></td>
+             <td th:text="${apintList.phone}"></td>
+             <td th:text="${apintList.date}"></td>
+             <td th:date="${apintList.department}"></td>
+             <td th:text="${apintList.doctor}"></td>
+             <td th:text="${apintList.disise}"></td>
+             <td>
+<!--                 <button th:href="@{'/appoedit/'+${apintList.id}}" type="button" class="btn btn-primary">Edit</button>-->
+<!--                 <button th:href="@{'/appodelete/'+${apintList.id}}" type="button" class="btn btn-danger">Delete</button>-->
+
+                 <a th:href="@{'/appoedit/' + ${apintList.id}}" class="btn btn-primary">Edit</a>
+                 <a th:href="@{'/appodelete/' + ${apintList.id}}" class="btn btn-danger">Delete</a>
+             </td>
+         </tr>
+         <!-- Add more rows for additional appointments -->
+
+         </tbody>
+     </table>
+
+ </div>
+
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ </body>
+
+ </html>
+
