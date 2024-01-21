@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Doctor Information</title>
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center">Doctor Information</h2>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Doctor's Name</th>
+            <th>Doctor's Phone</th>
+            <th>Department</th>
+            <th>Specialization</th>
+            <th>Qualification</th>
+            <th>Experience</th>
+            <th>Joining Date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Add a row for each doctor with data -->
+        <tr th:each="doclist:${doctor}">
+            <td th:text="${doclist.doctorId}"></td>
+            <td th:text="${doclist.name}"></td>
+            <td th:text="${doclist.phone}"></td>
+            <td th:text="${doclist.department}"></td>
+            <td th:text="${doclist.specilization}"></td>
+            <td th:text="${doclist.qualification}"></td>
+            <td th:text="${doclist.experience}"></td>
+            <td th:text="${doclist.date}"></td>
+<!--            <td th:date="${#dates.format(doclist.date, 'dd-MMM-yyyy')}"></td>-->
+            <td>
+                <a th:href="@{'/editDoc/' + ${doclist.doctorId}}" class="btn btn-primary">Edit</a>
+
+                <a th:href="@{'/docdelete/' + ${doclist.doctorId}}" class="btn btn-danger">Delete</a>
+
+            </td>
+        </tr>
+        <!-- Add more rows for additional doctors -->
+
+        </tbody>
+    </table>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

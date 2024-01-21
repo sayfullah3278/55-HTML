@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Billing Form</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Patient Billing Form</h2>
+
+    <form th:action="@{/billing}" th:object="${bill}" method="post">
+
+        <!-- Hidden field for patient ID -->
+        <input type="hidden" th:field="*{id}" />
+
+        <!-- Patient Information Fields -->
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" class="form-control" id="fullName" th:value="*{admission.name}" readonly />
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" class="form-control" id="age" th:value="*{admission.age}" readonly />
+        </div>
+
+        <div class="col-md-4 form-group mt-3">
+            <input type="datetime-local" name="date" class="form-control" id="admissionDate"
+                   placeholder="Admission Date" required th:value="*{admission.admissionDate}" />
+            <div class="validate"></div>
+        </div>
+
+        <div class="col-md-4 form-group mt-3">
+            <input type="datetime-local" name="date" class="form-control" id="discharge Date" placeholder="discharge Date" required th:field="*{dischargeDate}" th:placeholder="yyyy-MM-dd"/>
+            <div class="validate"></div>
+        </div>
+
+        <!-- Billing Information Fields -->
+        <div class="form-group">
+            <label for="totalAmount">Total Amount:</label>
+            <input type="text" class="form-control" id="totalAmount" th:field="*{totalAmount}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="totalAmount">Paid Amount:</label>
+            <input type="text" class="form-control" id="totalAmount" th:field="*{paidAmount}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="totalAmount">Due Amount:</label>
+            <input type="text" class="form-control" id="totalAmount" th:field="*{dueAmount}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="paymentMethod">Payment Method:</label>
+            <select class="form-control" id="paymentMethod" th:field="*{paymentMethod}" required>
+                <option value="">Select Payment Method</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Cash">Cash</option>
+                <!-- Add more payment methods as needed -->
+            </select>
+        </div>
+
+        <!-- Add more billing fields as needed -->
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Submit Billing</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS and Popper.js (if needed) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

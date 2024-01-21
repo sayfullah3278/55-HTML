@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Search Patients By Doctor</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Search Patients By Doctor</h2>
+
+    <form id="searchForm" th:action="@{/searchPatientsByDoctor}" method="get">
+        <div class="form-group">
+            <label for="doctorSelect">Select Doctor:</label>
+            <select class="form-control" id="doctorSelect" name="name" required>
+                <option th:each="doctor : ${doctors}" th:value="${doctor.name}" th:text="${doctor.name}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Search Results</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Patient ID</th>
+                <th>Patient Name</th>
+            </tr>
+            </thead>
+            <tbody id="resultTableBody">
+            <tr th:each="patient : ${patients}">
+                <td th:text="${patient.id}"></td>
+                <td th:text="${patient.patient.getName}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Add Doctor Information</title>
+</head>
+
+<body>
+
+
+<section id="add-doctor" class="add-doctor section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Add Doctor</h2>
+            <p>Add a new doctor to the system.</p>
+        </div>
+
+        <form th:action="@{/doctorform}" th:object="${docSave}" method="post" role="form" class="php-email-form">
+            <input type="hidden" th:field="*{doctorId}"/>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <input type="text" class="form-control" id="name" placeholder="Doctor's Name" required
+                           th:field="*{name}"/>
+                </div>
+
+
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                    <input type="tel" class="form-control" name="phone" id="phone" placeholder="Doctor's Phone" required
+                           th:field="*{phone}"/>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-4 form-group mt-3">
+                    <select name="department" id="department" class="form-select" th:field="*{department}"/>
+                    <option value="">Select Department</option>
+                    <option value="Accident & Emergency">PHYSICAL MEDICINE & REHABILITATION</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="ORTHOPEDICS">ORTHOPEDICS</option>
+                    <option value="Dermatology & Venereology">Dermatology & Venereology</option>
+                    <option value="NUCLEAR MEDICINE">NUCLEAR MEDICINE</option>
+                    <option value="HEPATOBILIARY AND PANCREATIC SURGERY">HEPATOBILIARY AND PANCREATIC SURGERY</option>
+                    <option value="PAEDIATRIC NEUROLOGY">PAEDIATRIC NEUROLOGY</option>
+
+                    </select>
+
+                </div>
+                <div class="col-md-4 form-group mt-3">
+                    <select name="specilization" id="specialization" class="form-select" th:field="*{specilization}"/>
+                    <option value="">Select Specilization</option>
+                    <option value="Accident & Emergency">PHYSICAL MEDICINE & REHABILITATION</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="ORTHOPEDICS">ORTHOPEDICS</option>
+                    <option value="Dermatology & Venereology">Dermatology & Venereology</option>
+                    <option value="NUCLEAR MEDICINE">NUCLEAR MEDICINE</option>
+                    <option value="HEPATOBILIARY AND PANCREATIC SURGERY">HEPATOBILIARY AND PANCREATIC SURGERY</option>
+                    <option value="PAEDIATRIC NEUROLOGY">PAEDIATRIC NEUROLOGY</option>
+
+                    </select>
+                </div>
+                <div class="col-md-4 form-group mt-3">
+                    <input type="text" name="qualification" class="form-control" id="qualification"
+                           placeholder="Qualification" required th:field="*{qualification}"/>
+                </div>
+                <div class="col-md-4 form-group mt-3">
+                    <input type="text" name="experience" class="form-control" id="experience" placeholder="Experience"
+                           required th:field="*{experience}"/>
+                </div>
+
+                <div class="col-md-4 form-group mt-3">
+                    <input type="datetime-local" name="date" class="form-control" id="admissionDate" placeholder="Joining  Date" required th:field="*{date}" th:placeholder="yyyy-MM-dd"/>
+                    <div class="validate"></div>
+                </div>
+            </div>
+
+
+            <!--            <div class="mb-3">-->
+            <!--                <div class="loading">Loading</div>-->
+            <!--                <div class="error-message"></div>-->
+            <!--                <div class="sent-message">Doctor information added successfully. Thank you!</div>-->
+            <!--            </div>-->
+            <div class="text-center">
+                <button th:if="${id==null}" type="submit" class="btn btn-primary">Add Doctor</button>
+                <button th:if="${id!=null}" type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+
+    </div>
+</section><!-- End Add Doctor Section -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

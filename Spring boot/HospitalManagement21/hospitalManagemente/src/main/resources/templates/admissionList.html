@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Admission Table</title>
+</head>
+
+<body>
+
+<!-- ======= Admission Table Section ======= -->
+<section id="admission-table" class="admission-table section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Hospital Admission Table</h2>
+            <p>View and manage admission records.</p>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Patient Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Blood Group</th>
+                <th>Admission Date</th>
+                <th>Doctor</th>
+                <th>Disease Description</th>
+                <th>Emergency Contact Number</th>
+                <th>Relationship with Patient</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="admissionLi:${admissionList}">
+                <td th:text="${admissionLi.admission_id}"></td>
+                <td th:text="${admissionLi.name}"></td>
+                <td th:text="${admissionLi.email}"></td>
+                <td th:text="${admissionLi.phone}"></td>
+                <td th:text="${admissionLi.age}"></td>
+                <td th:text="${admissionLi.sex}"></td>
+                <td th:text="${admissionLi.bloodGroup}"></td>
+                <td th:text="${admissionLi.admissionDate}"></td>
+                 <td th:text="${admissionLi.doctorsId.getName()}"></td>
+                <td th:text="${admissionLi.diseaseDescription}"></td>
+                <td th:text="${admissionLi.emergencyContactNumber}"></td>
+                <td th:text="${admissionLi.relationshipWithPatient}"></td>
+                <td>
+                    <a th:href="@{'/admissioneditfrm/' + ${admissionLi.admission_id}}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{'/admissiondelet/' + ${admissionLi.admission_id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            <!-- Add more rows for additional records -->
+            </tbody>
+        </table>
+
+    </div>
+</section><!-- End Admission Table Section -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
