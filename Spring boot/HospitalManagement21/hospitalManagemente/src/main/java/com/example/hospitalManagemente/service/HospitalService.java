@@ -4,6 +4,7 @@ package com.example.hospitalManagemente.service;
 import com.example.hospitalManagemente.model.Appointments;
 import com.example.hospitalManagemente.model.Bill;
 import com.example.hospitalManagemente.model.Doctor;
+import com.example.hospitalManagemente.repository.AppointmentRepo;
 import com.example.hospitalManagemente.repository.BillRepository;
 import com.example.hospitalManagemente.repository.DoctorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class HospitalService {
 
     @Autowired
     private DoctorRepo doctorRepo;
+
+    @Autowired
+    private AppointmentRepo appointmentRepo;
 
     @Autowired
     private BillRepository billRepository;
@@ -36,9 +40,10 @@ public class HospitalService {
         return  billRepository.findById(admission_id).get();
     }
 
+    public List<Appointments> findPatientsByDoctorId(int doctorId) {
 
-
-    public List<Appointments> findPatientsByDoctorId(Long doctorId) {
-        return doctorRepo.findPatientsByDoctorId(doctorId);
+        return (List<Appointments>) appointmentRepo.findById(doctorId).get();
     }
+
+
 }

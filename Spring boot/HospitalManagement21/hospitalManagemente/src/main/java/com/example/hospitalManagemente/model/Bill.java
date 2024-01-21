@@ -32,6 +32,9 @@ public class Bill {
 
     private double dueAmount;
 
+
+    private String paymentMethod;
+
     // other billing information fields
 
     @ManyToOne

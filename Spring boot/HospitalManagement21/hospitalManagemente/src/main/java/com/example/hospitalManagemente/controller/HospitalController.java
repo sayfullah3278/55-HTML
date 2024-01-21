@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Controller
-@RequestMapping("/hospital")
+@RequestMapping("")
 public class HospitalController {
 
     @Autowired
@@ -59,17 +59,17 @@ public class HospitalController {
         }
     }
 
-    @PostMapping("/billing")
+    @GetMapping("/billing")
     public String submitBilling(@ModelAttribute Bill bill) {
-        // Perform billing logic (calculate total amount, save bill, etc.)
+//         Perform billing logic (calculate total amount, save bill, etc.)
         billRepository.save(bill);
-        return "redirect:/hospital/billing/" + bill.getAdmission().getAdmission_id();
+        return "redirect:/hospital/billing/" + bill.getAdmission();
     }
 
-    @RequestMapping("/patients/findById")
+    @RequestMapping("/patientsfindById")
     public String searchPatientsByDoctor(@RequestParam("doctorId") int doctorId, Model model) {
         List<Appointments> appointments = hospitalService.findPatientsByDoctorId(doctorId);
         model.addAttribute("appointments", appointments);
-        return "patient-find-by-doctor"; // Replace with the actual view name
+        return "pasentfindbydoctorname"; // Replace with the actual view name
     }
 }
